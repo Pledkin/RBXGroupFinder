@@ -49,6 +49,8 @@ void main(List<String> args) async {
     }
   } else {
     print('No groups without owner were found');
+    print('Press enter to continue');
+    stdin.readLineSync();
     exit(0);
   }
   print('');
