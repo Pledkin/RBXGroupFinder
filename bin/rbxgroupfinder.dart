@@ -5,6 +5,7 @@ import 'package:rbxgroupfinder/src/rbx_group_finder.dart';
 void main(List<String> args) async {
   List<int> groupIdsWithoutOwner = [];
   String searchTerm;
+  String howManyPages;
   //List<int> groupIdsWithRobux = [];
   var groupSearchLimit = 100;
   var groupList;
@@ -13,9 +14,13 @@ void main(List<String> args) async {
 
   print('Enter search term: ');
   searchTerm = stdin.readLineSync();
+  print('How many pages do you want this script to loop through? (Each page is 100 groups)');
+  howManyPages = stdin.readLineSync();
+
+  untilPage = int.parse(howManyPages);
 
   while (page < untilPage) {
-    print('Page: ' + (page + 1).toString());
+    print('Page ' + (page + 1).toString() + '/' + untilPage.toString());
     if (page == 0) {
       groupList = await getGroupList(searchTerm, groupSearchLimit, '');
     } else {
@@ -34,5 +39,6 @@ void main(List<String> args) async {
     page++;
   }
 
+  print('Here are group ids without owner:');
   print(groupIdsWithoutOwner);
 }
