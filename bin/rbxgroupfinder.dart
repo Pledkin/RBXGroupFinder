@@ -19,6 +19,8 @@ void main(List<String> args) async {
 
   untilPage = int.parse(howManyPages);
 
+  print('');
+
   while (page < untilPage) {
     print('Page ' + (page + 1).toString() + '/' + untilPage.toString());
     if (page == 0) {
@@ -39,6 +41,17 @@ void main(List<String> args) async {
     page++;
   }
 
-  print('Here are group ids without owner:');
-  print(groupIdsWithoutOwner);
+  if (groupIdsWithoutOwner.length != 0) {
+    print('');
+    print('Here are group ids without owner:');
+    for (var i = 0; i < groupIdsWithoutOwner.length; i++) {
+      print(groupIdsWithoutOwner[i]);
+    }
+  } else {
+    print('No groups without owner were found');
+    exit(0);
+  }
+  print('');
+  print('Press enter to continue');
+  stdin.readLineSync();
 }
